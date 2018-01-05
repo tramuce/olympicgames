@@ -1,0 +1,11 @@
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\api\ILocationRepository.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\api\IPhaseRepository.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\api\ICountryRepository.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\model\Phase.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\model\Location.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\api\IModalityRepository.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\configuration\OlympicGamesRepositoryConfig.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\model\Modality.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\api\ICompetitionRepository.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\model\Competition.java
+D:\Projects\Workspace\strategy_challenge\olympicgames-api\olympicgames-repository\src\main\java\br\com\olympicgames\repository\model\Country.java

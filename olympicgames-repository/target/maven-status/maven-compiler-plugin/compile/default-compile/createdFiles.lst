@@ -1,0 +1,11 @@
+br\com\olympicgames\repository\configuration\OlympicGamesRepositoryConfig.class
+br\com\olympicgames\repository\model\Phase.class
+br\com\olympicgames\repository\api\ICompetitionRepository.class
+br\com\olympicgames\repository\model\Location.class
+br\com\olympicgames\repository\api\IModalityRepository.class
+br\com\olympicgames\repository\api\ICountryRepository.class
+br\com\olympicgames\repository\api\IPhaseRepository.class
+br\com\olympicgames\repository\api\ILocationRepository.class
+br\com\olympicgames\repository\model\Country.class
+br\com\olympicgames\repository\model\Competition.class
+br\com\olympicgames\repository\model\Modality.class
