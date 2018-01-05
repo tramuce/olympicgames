@@ -6,6 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author tramuce
+ * 
+ *         Modelo da entidade Country.
+ *
+ */
 @Entity(name = "country")
 public class Country {
 

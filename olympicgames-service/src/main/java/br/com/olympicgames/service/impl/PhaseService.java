@@ -12,6 +12,12 @@ import br.com.olympicgames.repository.api.IPhaseRepository;
 import br.com.olympicgames.repository.model.Phase;
 import br.com.olympicgames.service.api.IPhaseService;
 
+/**
+ * @author tramuce
+ * 
+ *         Classe de que implementa a interface IPhaseService.
+ *
+ */
 @Service
 public class PhaseService implements IPhaseService {
 
@@ -30,8 +36,14 @@ public class PhaseService implements IPhaseService {
 
     @Override
     public List<Phase> find(Phase phase) {
+	// O ExampleMatcher estar servindo para fazer um ignoreCase no campo
+	// 'tag' informado pelo cliente, uma vez que 'Final', 'FINAl' ou 'final'
+	// serão considerados iguais nesse cenário.
 	ExampleMatcher mather = ExampleMatcher.matching().withIgnoreCase("tag");
 
+	// Esta sendo utilizada a consulta com Example do Spring Data, ou seja,
+	// a consulta irá filtrar a consulta com todos os valores informados no
+	// objeto Phase, utilizando o ExampleMatcher informado.
 	return phaseRepository.findAll(Example.of(phase, mather));
     }
 

@@ -4,6 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * @author tramuce
+ *
+ *         Classe de inicialização da aplicação utilizando Spring Boot.
+ */
 @SpringBootApplication
 @ComponentScan({ "br.com.olympicgames" })
 public class OlympicGamesApplication {

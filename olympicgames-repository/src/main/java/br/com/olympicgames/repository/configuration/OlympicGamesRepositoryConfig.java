@@ -17,6 +17,19 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * @author tramuce
+ * 
+ *         Classe de configuração do banco de dados. Nela são definidos o
+ *         DataSource, EntityManagerFactorye e Transaction. As classes do JPA
+ *         estão mapeadas no pacote 'br.com.olympicgames.repository'. Esta sendo
+ *         desativada o ddl-auto do jpa, tornando assim necessária a criação dos
+ *         scripts para criação do banco. Tal abordagem foi feita por acreditar
+ *         que ao pensar na estrutura do banco relacional, evita-se dependencias
+ *         ciclicas na aplicação, e melhor desempenho e facilidade na consulta
+ *         dos recursos.
+ *
+ */
 @Configuration
 @EnableJpaRepositories(basePackages = { "br.com.olympicgames.repository" })
 @EnableTransactionManagement

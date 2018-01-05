@@ -14,6 +14,16 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+/**
+ * @author tramuce
+ * 
+ *         Modelo da entidade Competition. São utilizadas os novos tipo
+ *         OffsetDateTime do java 8 para as datas. Tal data já é formatado nas
+ *         especificações ISO8601 com time zone. Obs. Deve-se verificar a
+ *         compatibilidade do tipo com o banco de dados (existente na versão
+ *         2.4.0 do HSQLDB)
+ *
+ */
 @Entity(name = "competition")
 public class Competition {
 

@@ -21,6 +21,14 @@ import br.com.olympicgames.repository.model.Modality;
 import br.com.olympicgames.service.api.ICompetitionService;
 import br.com.olympicgames.service.exception.ApiException;
 
+/**
+ * @author tramuce
+ * 
+ *         Controller para o recurso de competições. Todos os endpoints retornam
+ *         objetos genéricos, permitindo o retorno tanto de objetos Competition
+ *         quanto de objetos ApiResponse no caso de erros.
+ *
+ */
 @RestController
 @RequestMapping("/competition")
 public class CompetitionController {
@@ -33,6 +41,8 @@ public class CompetitionController {
 	try {
 	    Competition newCompetition = competitionService.create(competition);
 
+	    // Além do objeto criado, será retornado no header o caminho do
+	    // endpoint que retorna o novo registro
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setLocation(uriBuilder.path("/competition/{id}").buildAndExpand(newCompetition.getId()).toUri());
 
@@ -48,6 +58,8 @@ public class CompetitionController {
 	    @RequestParam(value = "order", required = false) String order) {
 
 	try {
+	    // Essa entidade de modality é montada para ser inserida dentro de
+	    // uma competition, de modo a ser utilizada como filtro na consulta.
 	    Modality modality = new Modality();
 	    modality.setId(modalityId);
 	    modality.setName(modalityName);
@@ -55,6 +67,8 @@ public class CompetitionController {
 	    Competition competition = new Competition();
 	    competition.setModality(modality);
 
+	    // É possível enviar alterar a ordenação por parte do cliente,
+	    // informando ASC ou DESC.
 	    Sort.Direction enumOrder = order != null ? Sort.Direction.fromString(order) : null;
 
 	    List<Competition> result = competitionService.find(competition, enumOrder);

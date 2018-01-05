@@ -14,6 +14,12 @@ import br.com.olympicgames.repository.model.Location;
 import br.com.olympicgames.service.api.ILocationService;
 import br.com.olympicgames.service.exception.ApiException;
 
+/**
+ * @author tramuce
+ * 
+ *         Classe de que implementa a interface ILocationService.
+ *
+ */
 @Service
 public class LocationService implements ILocationService {
 
@@ -32,22 +38,28 @@ public class LocationService implements ILocationService {
 
     @Override
     public List<Location> find(Location location) {
+	// O ExampleMatcher estar servindo para fazer um ignoreCase no campo
+	// 'description' informado pelo cliente, uma vez que 'Estário 01', 'ESTÁDIO 01' ou
+	// 'estádio 01' serão considerados iguais nesse cenário.
 	ExampleMatcher mather = ExampleMatcher.matching().withIgnoreCase("description");
 
+	// Esta sendo utilizada a consulta com Example do Spring Data, ou seja,
+	// a consulta irá filtrar a consulta com todos os valores informados no
+	// objeto Location, utilizando o ExampleMatcher informado.
 	return locationRepository.findAll(Example.of(location, mather));
     }
 
     @Override
     public Location create(Location location) throws ApiException {
-	ExampleMatcher mather = ExampleMatcher.matching().withIgnoreCase("description");
-
-	if (locationRepository.exists(Example.of(location, mather)))
-	    throw new ApiException(HttpStatus.BAD_REQUEST, 400, "Já existe um local com essa descrição");
-
 	if (location.getDescription() == null || location.getDescription().trim().isEmpty())
 	    throw new ApiException(HttpStatus.BAD_REQUEST, 400, "O campo descrição é obrigatório");
 
+	ExampleMatcher mather = ExampleMatcher.matching().withIgnoreCase("description");
+
 	location.setId(null);
+
+	if (locationRepository.exists(Example.of(location, mather)))
+	    throw new ApiException(HttpStatus.BAD_REQUEST, 400, "Já existe um local com essa descrição");
 
 	return locationRepository.save(location);
     }
