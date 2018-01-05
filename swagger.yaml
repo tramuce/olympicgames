@@ -1,0 +1,204 @@
+swagger: '2.0'
+info:
+  description: ' Documentação da API do desafio da Strategy para gerir os dados das competições dos Jogos Olímpicos Tokyo 2020.'
+  version: 1.0.0
+  title: Desafio Jogos Olímpicos Tokyo 2020
+host: 'localhost:9000'
+basePath: /
+tags:
+  - name: Competições
+    description: Recursos de competições
+schemes:
+  - http
+paths:
+  /competition:
+    post:
+      tags:
+        - Competições
+      summary: Adiciona uma nova competição
+      description: ''
+      operationId: addCompetition
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: body
+          name: body
+          description: O objeto Competition que deverá ser adicionado
+          required: true
+          schema:
+            $ref: '#/definitions/Competition'
+      responses:
+        '200':
+          description: Sucesso na operação
+          schema:
+            $ref: '#/definitions/Competition'
+        '400':
+          description: Competição inválida
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '500':
+          description: Erro no servidor
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      tags:
+        - Competições
+      summary: 'Busca as competições cadastradas, podendo informar filtros'
+      description: ''
+      operationId: findCompetitions
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - name: modalityId
+          in: query
+          description: Id da modalidade a ser utilizada na consulta
+          required: false
+          type: integer
+        - name: modalityName
+          in: query
+          description: Nome da modalidade a ser utilizada na consulta
+          required: false
+          type: string
+        - name: order
+          in: query
+          description: Se a ordenação por data será crescente ou descrescente
+          required: false
+          type: string
+          enum:
+            - ASC
+            - DESC
+      responses:
+        '200':
+          description: Sucesso na operação
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Competition'
+        '500':
+          description: Erro no servidor
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  '/competition/{id}':
+    get:
+      tags:
+        - Competições
+      summary: Recupera a competição por Id
+      description: Retorna uma única competição
+      operationId: getCompetition
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: Id da competição a ser retornada
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Sucesso na operação
+          schema:
+            $ref: '#/definitions/Competition'
+        '400':
+          description: Competição inválida
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '500':
+          description: Erro no servidor
+          schema:
+            $ref: '#/definitions/ApiResponse'
+definitions:
+  Modality:
+    type: object
+    required:
+      - name
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+  Location:
+    type: object
+    required:
+      - description
+    properties:
+      id:
+        type: integer
+        format: int64
+      description:
+        type: string
+  Country:
+    type: object
+    required:
+      - name
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+  Phase:
+    type: object
+    required:
+      - tag
+    properties:
+      id:
+        type: integer
+        format: int64
+      description:
+        type: string
+      tag:
+        type: string
+        enum:
+          - final
+          - semifinals
+          - quarterfinals
+          - eighth-finals
+          - eliminatories
+      allowSameCountry:
+        type: boolean
+        description: Define se a etapa permite mais de um participante do mesmo país.
+  Competition:
+    type: object
+    required:
+      - location
+      - modality
+      - phase
+      - initDate
+      - endDate
+      - countries
+    properties:
+      id:
+        type: integer
+        format: int64
+      location:
+        $ref: '#/definitions/Location'
+      modality:
+        $ref: '#/definitions/Modality'
+      phase:
+        $ref: '#/definitions/Phase'
+      initDate:
+        type: string
+        format: date-time
+      endDate:
+        type: string
+        format: date-time
+      countries:
+        type: array
+        items:
+          $ref: '#/definitions/Country'
+  ApiResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
