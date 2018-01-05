@@ -153,7 +153,7 @@ public class CompetitionService implements ICompetitionService {
 	    // Caso exista alguma repetição, não podemos prosseguir.
 	    if (duplicatedCountries.size() > 0) {
 		throw new ApiException(HttpStatus.BAD_REQUEST, 400,
-			"O mesmo país não pode estar mais de uma vez na competição no etapa "
+			"O mesmo país não pode estar mais de uma vez na competição na etapa "
 				+ competition.getPhase().getDescription());
 	    }
 	}

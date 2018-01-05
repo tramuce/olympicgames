@@ -1,5 +1,7 @@
 package br.com.olympicgames.repository.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +15,12 @@ import javax.persistence.Id;
  *
  */
 @Entity(name = "modality")
-public class Modality {
+public class Modality implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1229991469528915255L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

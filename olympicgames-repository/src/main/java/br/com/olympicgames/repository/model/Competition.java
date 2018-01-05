@@ -1,5 +1,6 @@
 package br.com.olympicgames.repository.model;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -25,7 +26,12 @@ import javax.persistence.ManyToOne;
  *
  */
 @Entity(name = "competition")
-public class Competition {
+public class Competition implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1640367141843523729L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,4 +1,4 @@
-package br.com.olympicgames.controller;
+package br.com.olympicgames;
 
 import java.util.List;
 
@@ -36,7 +36,8 @@ public class CompetitionController {
     @Autowired
     ICompetitionService competitionService;
 
-    @RequestMapping(method = RequestMethod.POST)
+    // @PostMapping("/")
+    @RequestMapping(method = RequestMethod.POST, consumes = { "application/json" }, produces = { "application/json" })
     public ResponseEntity<Object> create(@RequestBody Competition competition, UriComponentsBuilder uriBuilder) {
 	try {
 	    Competition newCompetition = competitionService.create(competition);
@@ -52,7 +53,8 @@ public class CompetitionController {
 	}
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    // @GetMapping("/")
+    @RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
     public ResponseEntity<Object> find(@RequestParam(value = "modalityName", required = false) String modalityName,
 	    @RequestParam(value = "modalityId", required = false) Long modalityId,
 	    @RequestParam(value = "order", required = false) String order) {
@@ -79,7 +81,8 @@ public class CompetitionController {
 	}
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    // @GetMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/json" })
     public ResponseEntity<Object> get(@PathVariable("id") Long id) {
 	Competition competition = competitionService.get(id);
 

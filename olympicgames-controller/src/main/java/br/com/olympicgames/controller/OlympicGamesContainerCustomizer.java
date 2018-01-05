@@ -1,4 +1,4 @@
-package br.com.olympicgames.controller.configuration;
+package br.com.olympicgames.controller;
 
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;

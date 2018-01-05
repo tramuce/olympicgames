@@ -1,4 +1,4 @@
-br\com\olympicgames\controller\CompetitionController.class
-br\com\olympicgames\controller\configuration\OlympicGamesApplication.class
-br\com\olympicgames\controller\configuration\OlympicGamesContainerCustomizer.class
+br\com\olympicgames\OlympicGamesApplication.class
+br\com\olympicgames\CompetitionController.class
+br\com\olympicgames\controller\OlympicGamesContainerCustomizer.class
 br\com\olympicgames\controller\json\ApiResponse.class

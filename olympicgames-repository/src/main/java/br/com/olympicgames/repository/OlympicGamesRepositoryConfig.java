@@ -1,4 +1,4 @@
-package br.com.olympicgames.repository.configuration;
+package br.com.olympicgames.repository;
 
 import java.util.Properties;
 

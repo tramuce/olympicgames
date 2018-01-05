@@ -1,4 +1,4 @@
-package br.com.olympicgames.controller.configuration;
+package br.com.olympicgames;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
